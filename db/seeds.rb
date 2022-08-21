@@ -1,35 +1,36 @@
-start = Time.now
+start = Time.zone.now
 
 # Clean database
 DatabaseCleaner.clean_with(:truncation)
 
 # create posts and users
-create_post_uri = "#{ENV['ROOT_URL']}posts"
-create_rating_uri = "#{ENV['ROOT_URL']}ratings"
+create_post_uri = "#{ENV.fetch('ROOT_URL', nil)}posts"
+create_rating_uri = "#{ENV.fetch('ROOT_URL', nil)}ratings"
 ip = Faker::Internet.ip_v4_address
 100.times do |index|
   # generate user
   login = Faker::Internet.username
 
-  if index.odd?
-    ip = Faker::Internet.ip_v4_address
-  end
+  ip = Faker::Internet.ip_v4_address if index.odd?
 
   2.times do
     # create posts and users
-    RestClient.post(create_post_uri, {post:{title:'testpost',body:'LoremIpsum',user_attributes:{login: login,ip: ip}}})
-
+    RestClient.post(create_post_uri,
+                    { post: { title: 'testpost', body: 'LoremIpsum', user_attributes: { login:, ip: } } })
   end
 end
 
 # create ratings
 200.times do
-  if Faker::Number.between(from: 1, to: 4) <= 3
-    RestClient.post(create_rating_uri, {rating:{user_id: User.offset(rand(User.count)).first.id, post_id: Post.offset(rand(Post.count)).first.id, value: Faker::Number.between(from: 1, to: 5)}})
-  end
+  next unless Faker::Number.between(from: 1, to: 4) <= 3
+
+  RestClient.post(create_rating_uri,
+                  { rating:
+                      { user_id: User.offset(rand(User.count)).first.id,
+                        post_id: Post.offset(rand(Post.count)).first.id,
+                        value: Faker::Number.between(from: 1, to: 5) } })
 end
 
-
-finish = Time.now
+finish = Time.zone.now
 diff = finish - start
-puts "Completed in: #{diff}"
+Rails.logger.debug { "Completed in: #{diff}" }

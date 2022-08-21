@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   defaults format: :json do
-    #consider adding api namespace
+    # consider adding api namespace
     #
     # posts
     post 'posts', to: 'posts#create', as: :create_post
