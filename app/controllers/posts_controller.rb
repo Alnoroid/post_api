@@ -19,9 +19,4 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :body, user_attributes: [:login, :ip])
   end
-
-
-  # def method_not_found
-  #   render json: { errors: ["No user attributes"] }, status: 500
-  # end
 end

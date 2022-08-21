@@ -4,4 +4,6 @@ class Rating < ApplicationRecord
 
   validates :post_id,:user_id,:value, presence: true
   validates :value, numericality: { in: 1..5 }
+
+
 end
