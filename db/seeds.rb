@@ -19,12 +19,16 @@ ip = Faker::Internet.ip_v4_address
     # create posts and users
     RestClient.post(create_post_uri, {post:{title:'testpost',body:'LoremIpsum',user_attributes:{login: login,ip: ip}}})
 
-    if Faker::Number.between(from: 1, to: 4) <= 3 && index >= 1
-      RestClient.post(create_rating_uri, {rating:{user_id: User.offset(rand(User.count)).first.id, post_id: Post.offset(rand(Post.count)).first.id, value: Faker::Number.between(from: 1, to: 5)}})
-    end
-
   end
 end
+
+# create ratings
+200.times do
+  if Faker::Number.between(from: 1, to: 4) <= 3
+    RestClient.post(create_rating_uri, {rating:{user_id: User.offset(rand(User.count)).first.id, post_id: Post.offset(rand(Post.count)).first.id, value: Faker::Number.between(from: 1, to: 5)}})
+  end
+end
+
 
 finish = Time.now
 diff = finish - start
