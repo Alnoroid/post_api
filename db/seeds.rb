@@ -1,5 +1,3 @@
-start = Time.zone.now
-
 # Clean database
 DatabaseCleaner.clean_with(:truncation)
 
@@ -30,7 +28,3 @@ end
                         post_id: Post.offset(rand(Post.count)).first.id,
                         value: Faker::Number.between(from: 1, to: 5) } })
 end
-
-finish = Time.zone.now
-diff = finish - start
-Rails.logger.debug { "Completed in: #{diff}" }
