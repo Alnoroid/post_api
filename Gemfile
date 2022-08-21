@@ -18,6 +18,11 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+gem 'faker'
+gem 'database_cleaner'
+
+gem 'rest-client'
+
 # Shim to load environment variables from .env into ENV in development.
 gem 'dotenv-rails', groups: [:development, :test]
 
