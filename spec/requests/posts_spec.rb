@@ -1,30 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe 'Posts', type: :request do
-  describe 'GET /create' do
-    it 'returns http success' do
-      get '/posts/create'
-      expect(response).to have_http_status(:success)
-    end
-  end
+  let(:posts) { FactoryBot.create(:user, :with_post) }
+  let(:low_rating) { FactoryBot.create(:low_rating) }
+  let(:high_rating) { FactoryBot.create(:high_rating) }
 
-  describe 'GET /rate' do
+  describe 'GET /posts/top/' do
     it 'returns http success' do
-      get '/posts/rate'
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe 'GET /top' do
-    it 'returns http success' do
-      get '/posts/top'
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe 'GET /get_by_ip' do
-    it 'returns http success' do
-      get '/posts/get_by_ip'
+      get '/posts/top/1'
       expect(response).to have_http_status(:success)
     end
   end

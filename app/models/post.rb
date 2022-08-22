@@ -21,4 +21,8 @@ class Post < ApplicationRecord
       .order('rating DESC')
       .limit(posts_count)
   end
+
+  def get_rating
+    self.ratings.average(:value)
+  end
 end

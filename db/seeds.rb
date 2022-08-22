@@ -11,15 +11,17 @@ ip = Faker::Internet.ip_v4_address
 
   ip = Faker::Internet.ip_v4_address if index.odd?
 
-  2.times do
+  2000.times do
     # create posts and users
+    title = Faker::Lorem.word
+    body = Faker::Lorem.paragraph
     RestClient.post(create_post_uri,
-                    { post: { title: 'testpost', body: 'LoremIpsum', user_attributes: { login:, ip: } } })
+                    { post: { title: title, body: body, user_attributes: { login:, ip: } } })
   end
 end
 
 # create ratings
-200.times do
+200000.times do
   next unless Faker::Number.between(from: 1, to: 4) <= 3
 
   RestClient.post(create_rating_uri,

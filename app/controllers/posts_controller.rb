@@ -13,11 +13,6 @@ class PostsController < ApplicationController
   def top
     posts = Post.top_n(params[:posts_count])
     render json: posts, status: :ok
-
-    # SELECT posts.id, posts.title, posts.body,AVG(r.value) as rating  FROM posts
-    # INNER JOIN ratings r on posts.id = r.post_id
-    # GROUP BY posts.id
-    # ORDER BY rating DESC
   end
 
   private

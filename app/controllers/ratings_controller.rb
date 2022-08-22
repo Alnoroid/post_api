@@ -2,7 +2,8 @@ class RatingsController < ApplicationController
   def create
     rating = Rating.new(rating_params)
     if rating.save
-      render json: rating.to_json, status: :created
+      average_rating = rating.post.get_rating
+      render json: {average_rating: average_rating}, status: :created
     else
       render json: { errors: rating.errors }, status: :unprocessable_entity
     end
