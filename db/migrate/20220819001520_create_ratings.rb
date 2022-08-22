@@ -4,8 +4,6 @@ class CreateRatings < ActiveRecord::Migration[7.0]
       t.references :post, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
       t.integer :value, null: false
-
-      t.timestamps
     end
   end
 end

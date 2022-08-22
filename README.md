@@ -21,7 +21,7 @@ Now this is much more interesting, API allows to create posts and users simultan
 title and body attributes are necessary, as well as user_attributes
 Example request to create user and post:
 ```
-curl -X POST http://localhost:3000/posts -H 'Content-Type: application/json' -d '{"post":{"title":"testpost","body":"LoremIpsum","user_attributes":{"login":"tester","ip":"127.0.0.1"}}}'
+curl -X POST http://localhost:3000/posts -H 'Content-Type: application/json' -d '{"post":{"title":"testpost","body":"LoremIpsum","ip":"127.0.0.1","user_attributes":{"login":"tester"}}}'
 ```
 If no user exists, a new one will be created on this request.
 Moreover, if there is some kind of error, API will respond what exactly caused this error.

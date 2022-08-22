@@ -5,18 +5,18 @@ DatabaseCleaner.clean_with(:truncation)
 create_post_uri = "#{ENV.fetch('ROOT_URL', nil)}posts"
 create_rating_uri = "#{ENV.fetch('ROOT_URL', nil)}ratings"
 ip = Faker::Internet.ip_v4_address
-100.times do |index|
+100.times do
   # generate user
   login = Faker::Internet.username
 
-  ip = Faker::Internet.ip_v4_address if index.odd?
 
-  2000.times do
+  2000.times do|index|
     # create posts and users
     title = Faker::Lorem.word
     body = Faker::Lorem.paragraph
+    ip = Faker::Internet.ip_v4_address if index.odd?
     RestClient.post(create_post_uri,
-                    { post: { title: title, body: body, user_attributes: { login:, ip: } } })
+                    { post: { title: title, body: body,ip: ip, user_attributes: { login: login} } })
   end
 end
 

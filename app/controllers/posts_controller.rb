@@ -18,6 +18,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, user_attributes: %i[login ip])
+    params.require(:post).permit(:title, :body, :ip, user_attributes: %i[login])
   end
 end

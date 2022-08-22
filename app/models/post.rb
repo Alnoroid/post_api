@@ -4,14 +4,12 @@ class Post < ApplicationRecord
 
   accepts_nested_attributes_for :user
 
-  validates :title, :body, presence: true
+  validates :title, :body,:ip, presence: true
 
   before_validation :find_user
 
   def find_user
-    self.user = User.find_or_create_by(login: user.login) do |u|
-      u.ip = user.ip
-    end
+    self.user = User.find_or_create_by(login: user.login)
   end
 
   def self.top_n(posts_count)
