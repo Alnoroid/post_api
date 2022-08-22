@@ -1,12 +1,14 @@
 FactoryBot.define do
-  factory :low_rating do
+  factory :rating do
     association :user, factory: :user
     association :post, factory: :post
-    value 1
-  end
-  factory :high_rating do
-    association :user, factory: :user
-    association :post, factory: :post
-    value 5
+
+    trait :low_value do
+      value { 1 }
+    end
+
+    trait :high_value do
+      value { 5 }
+    end
   end
 end
