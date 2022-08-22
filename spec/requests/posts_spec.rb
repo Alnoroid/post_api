@@ -4,11 +4,6 @@ RSpec.describe 'Posts', type: :request do
   let!(:posts) { FactoryBot.create(:user, :with_post) }
   let!(:low_rating) { FactoryBot.create(:rating, :low_value) }
   let!(:high_rating) { FactoryBot.create(:rating, :high_value) }
-  params = {
-    "post":
-      {"title":"testpost","body":"LoremIpsum",
-       "user_attributes":
-         {"login":"tester","ip":"127.0.0.1"}}}
 
   describe 'GET /posts/top/' do
     it 'returns http success' do
