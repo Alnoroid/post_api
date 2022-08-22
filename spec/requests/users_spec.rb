@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :request do
-  let!(:posts) { FactoryBot.create_list(:user,3,:with_post)}
+  let!(:posts) { FactoryBot.create_list(:user, 3, :with_post) }
 
   describe 'GET /users/ips' do
     it 'returns http success' do

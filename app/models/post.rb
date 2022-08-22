@@ -4,7 +4,7 @@ class Post < ApplicationRecord
 
   accepts_nested_attributes_for :user
 
-  validates :title, :body,:ip, presence: true
+  validates :title, :body, :ip, presence: true
 
   before_validation :find_user
 
@@ -20,7 +20,7 @@ class Post < ApplicationRecord
       .limit(posts_count)
   end
 
-  def get_rating
-    self.ratings.average(:value)
+  def rating
+    ratings.average(:value)
   end
 end

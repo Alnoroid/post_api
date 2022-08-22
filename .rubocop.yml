@@ -13,3 +13,6 @@ Metrics/MethodLength:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+CreateTableWithTimestamps:
+  Enabled: false
