@@ -24,6 +24,9 @@
 # Ignore idea IDE files
 .idea/
 
+# Ignore coverage files
+coverage/
+
 # Ignore env files
 .env.production.local
 .env.development.local
