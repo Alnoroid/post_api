@@ -18,16 +18,4 @@ RSpec.describe 'Posts', type: :request do
     end
   end
 
-  describe 'POST /posts' do
-    it 'should create post' do
-      # post :posts, params
-      # expect{ Post.count }
-      #   .to change(Post, :count).by(+1)
-    end
-
-    it 'should create user' do
-      # post '/posts', params
-
-    end
-  end
 end

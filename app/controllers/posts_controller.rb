@@ -1,6 +1,4 @@
 class PostsController < ApplicationController
-  # rescue_from NoMethodError, :with => :method_not_found
-
   def create
     post = Post.new(post_params)
     if post.save
